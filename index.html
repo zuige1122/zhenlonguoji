@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好体育 - 多语言在线娱乐平台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff7e6 0%, #ffe3a0 50%, #ffd066 100%);
+            color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px;
+            overflow-x: hidden;
+        }
+
+        /* 卡片柔和高级外发光 */
+        @keyframes softGoldGlow {
+            0%, 100% { 
+                box-shadow: 0 20px 50px rgba(220, 130, 0, 0.18), 0 0 25px rgba(255, 200, 0, 0.3); 
+                border-color: rgba(255, 180, 0, 0.5);
+            }
+            50% { 
+                box-shadow: 0 25px 65px rgba(220, 130, 0, 0.28), 0 0 40px rgba(255, 180, 0, 0.6); 
+                border-color: rgba(255, 180, 0, 0.8);
+            }
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1320px;
+            background: #ffffff;
+            border: 1.5px solid rgba(255, 180, 0, 0.4);
+            border-radius: 32px;
+            display: flex;
+            overflow: hidden;
+            animation: softGoldGlow 4s infinite ease-in-out;
+            transition: all 0.3s ease;
+        }
+
+        /* ------------------ PC端大屏专属优化 ------------------ */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1440px;
+            }
+
+            .triangle-ribbon {
+                width: 120px !important;
+                height: 120px !important;
+            }
+
+            .logo-box {
+                top: 12px !important;
+                left: 12px !important;
+                gap: 6px !important;
+            }
+
+            .logo-icon {
+                font-size: 24px !important;
+            }
+
+            .logo-title {
+                font-size: 16px !important;
+            }
+
+            .sub-domain {
+                font-size: 10px !important;
+            }
+
+            .content-box {
+                flex: 1.1;
+                padding: 55px 65px 55px 65px !important;
+            }
+
+            h1 {
+                font-size: 36px !important;
+                margin-bottom: 22px !important;
+            }
+
+            .section-title {
+                font-size: 15px !important;
+                margin-bottom: 10px !important;
+            }
+
+            .tag-item {
+                font-size: 14.5px !important;
+                padding: 7px 16px !important;
+                border-radius: 20px !important;
+            }
+
+            .info-card {
+                padding: 16px 20px !important;
+                margin-bottom: 18px !important;
+            }
+
+            .info-card p {
+                font-size: 15px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .btn {
+                padding: 16px 24px !important;
+                font-size: 19px !important;
+                border-radius: 30px !important;
+            }
+
+            .btn-group {
+                gap: 16px !important;
+                margin-bottom: 18px !important;
+            }
+
+            .live-notice {
+                font-size: 15.5px !important;
+                padding: 13px 18px !important;
+            }
+
+            .image-box {
+                flex: 1.1;
+            }
+        }
+
+        /* ------------------ 左上角短巧直角三角形斜角 ------------------ */
+        .triangle-ribbon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ffc700 0%, #ff8800 100%);
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            z-index: 10;
+            pointer-events: none;
+            filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.12));
+        }
+
+        .logo-box {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #000000;
+            pointer-events: auto;
+            z-index: 11;
+        }
+
+        .logo-icon {
+            font-family: 'Fredoka', 'Arial Black', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            font-style: italic;
+            color: #000000;
+            line-height: 1;
+        }
+
+        .logo-text-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            color: #000000;
+            transform: skewX(-4deg);
+            display: inline-block;
+            line-height: 1.1;
+        }
+
+        .sub-domain {
+            font-size: 8px;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: 0.3px;
+        }
+
+        .content-box {
+            flex: 1.25;
+            padding: 45px 40px 45px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            line-height: 1.35;
+            font-weight: 900;
+            letter-spacing: -0.3px;
+            color: #111111;
+            background: linear-gradient(90deg, #000000 0%, #2c2c2c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title {
+            font-size: 14px;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        /* 标签组 */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 16px;
+        }
+
+        .tag-item {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #fffbee 0%, #ffe082 100%);
+            color: #111111;
+            border: 1.5px solid #ffb300;
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 800;
+            box-shadow: 0 2px 8px rgba(255, 179, 0, 0.15);
+            animation: tagPulse 1.4s infinite ease-in-out;
+        }
+
+        @keyframes tagPulse {
+            0%, 100% { transform: translateY(0) scale(1); }
+            18% { transform: translateY(-3px) scale(1.05); background: linear-gradient(135deg, #ffecb3 0%, #ffc107 100%); }
+            36% { transform: translateY(0) scale(1); }
+        }
+
+        .tag-item:nth-child(1) { animation-delay: 0s; }
+        .tag-item:nth-child(2) { animation-delay: 0.15s; }
+        .tag-item:nth-child(3) { animation-delay: 0.30s; }
+        .tag-item:nth-child(4) { animation-delay: 0.45s; }
+        .tag-item:nth-child(5) { animation-delay: 0.60s; }
+        .tag-item:nth-child(6) { animation-delay: 0.75s; }
+        .tag-item:nth-child(7) { animation-delay: 0.90s; }
+
+        /* 特色信息聚合精美卡片 */
+        .info-card {
+            background: linear-gradient(135deg, #fffaf0 0%, #fff4e0 100%);
+            border: 1px solid rgba(255, 180, 0, 0.35);
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(255, 150, 0, 0.05);
+        }
+
+        .info-card p {
+            font-size: 13.5px;
+            line-height: 1.6;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2b2b2b;
+        }
+
+        .info-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-text {
+            color: #d96b00;
+            font-weight: 900;
+        }
+
+        /* ------------------ 2×2 整齐网格按钮组 ------------------ */
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.03); }
+            30% { transform: scale(1); }
+        }
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 18px;
+            font-size: 15px;
+            font-weight: 800;
+            border-radius: 24px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            animation: heartbeat 3.2s infinite ease-in-out;
+            text-align: center;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(60deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: rotate(30deg) translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .btn:hover::after {
+            transform: rotate(30deg) translateX(100%);
+        }
+
+        .btn:hover {
+            animation-play-state: paused;
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .btn-yellow {
+            background: linear-gradient(135deg, #ffc700 0%, #ff8800 100%);
+            color: #000000;
+            border: none;
+            box-shadow: 0 4px 14px rgba(255, 140, 0, 0.35);
+        }
+
+        .btn-yellow:hover {
+            box-shadow: 0 6px 18px rgba(255, 140, 0, 0.5);
+        }
+
+        .btn-white {
+            background: #f1f4f9;
+            color: #111111;
+            border: 1px solid #d8e0ed;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .btn-white:hover {
+            background: #e4eaf5;
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        /* ------------------ 直播提示横幅样式 ------------------ */
+        .live-notice {
+            background: linear-gradient(135deg, rgba(255,199,0,0.18), rgba(255,136,0,0.18));
+            border: 1.5px solid rgba(255,136,0,0.4);
+            padding: 11px 16px;
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #a65200;
+            border-radius: 14px;
+            text-align: center;
+            line-height: 1.5;
+            box-shadow: 0 4px 12px rgba(255, 140, 0, 0.08);
+        }
+
+        .image-box {
+            flex: 1;
+            background-color: #fff8eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .image-box picture, .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ------------------ H5 移动端适配 ------------------ */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                background: linear-gradient(135deg, #fff5dc 0%, #ffe099 100%);
+            }
+
+            .container {
+                flex-direction: column;
+                border-radius: 20px;
+                max-width: 100%;
+            }
+
+            .triangle-ribbon {
+                width: 75px;
+                height: 75px;
+            }
+
+            .logo-box {
+                top: 5px;
+                left: 5px;
+            }
+
+            .logo-title {
+                font-size: 10px;
+            }
+
+            .logo-icon {
+                font-size: 13px;
+            }
+
+            .sub-domain {
+                font-size: 7px;
+            }
+
+            .content-box {
+                padding: 42px 16px 20px 16px;
+            }
+
+            h1 {
+                font-size: 19px;
+                margin-top: 4px;
+                margin-bottom: 10px;
+            }
+
+            .section-title {
+                font-size: 12.5px;
+                margin-bottom: 6px;
+            }
+
+            .tags-container {
+                gap: 5px;
+                margin-bottom: 10px;
+            }
+
+            .tag-item {
+                font-size: 11px;
+                padding: 3px 8px;
+                border-radius: 12px;
+            }
+
+            .info-card {
+                padding: 10px 12px;
+                margin-bottom: 10px;
+            }
+
+            .info-card p {
+                font-size: 12px;
+                margin-bottom: 4px;
+            }
+
+            .btn-group {
+                gap: 8px;
+                margin-bottom: 10px;
+            }
+
+            .btn {
+                padding: 11px 10px;
+                font-size: 13.5px;
+                border-radius: 18px;
+            }
+
+            .live-notice {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .image-box {
+                width: 100%;
+                height: auto;
+                background-color: #ffffff;
+            }
+            
+            .image-box img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 精致小巧的直角三角形斜角与 Logo -->
+        <div class="triangle-ribbon"></div>
+        <div class="logo-box">
+            <span class="logo-icon">h</span>
+            <div class="logo-text-group">
+                <span class="logo-title">好体育</span>
+                <span class="sub-domain">国际平台</span>
+            </div>
+        </div>
+
+        <!-- 左侧/上方 内容文案 -->
+        <div class="content-box">
+            <h1 data-i18n="title">⭐ 全网首家多语种与多币种在线娱乐平台</h1>
+            
+            <!-- 热门项目 -->
+            <div class="section-title" data-i18n="p1_title">🔥 热门娱乐项目畅玩：</div>
+            <div class="tags-container" id="tagsContainer">
+                <span class="tag-item" data-i18n-tag="t1">真人视讯</span>
+                <span class="tag-item" data-i18n-tag="t2">棋牌</span>
+                <span class="tag-item" data-i18n-tag="t3">彩票</span>
+                <span class="tag-item" data-i18n-tag="t4">体育赛事</span>
+                <span class="tag-item" data-i18n-tag="t5">电子竞技</span>
+                <span class="tag-item" data-i18n-tag="t6">老虎机</span>
+                <span class="tag-item" data-i18n-tag="t7">捕鱼</span>
+            </div>
+
+            <!-- 特色信息聚合精美卡片 -->
+            <div class="info-card">
+                <p data-i18n="p2">🌐 支持数十种不同语言 / 多种货币以及虚拟币出入金 随心切换</p>
+                <p data-i18n="p3" class="highlight-text">🛡️ 32年持续运营老牌平台 • 公平公正 • 资金安全•出入款秒到</p>
+                <p data-i18n="p4" style="font-weight: 900; color: #000000;">🚀 好体育 期待您的加入！</p>
+            </div>
+
+            <!-- 2×2 整齐网格按钮组 -->
+            <div class="btn-group">
+                <a href="https://39346.app/registered" target="_blank" class="btn btn-yellow" data-i18n="btnRegister">立即注册</a>
+                <a href="https://39346.app/promotion" target="_blank" class="btn btn-white" data-i18n="btnPromo">优惠活动</a>
+                <a href="https://39346.app/mine" target="_blank" class="btn btn-white" data-i18n="btnChat">会员聊天室</a>
+                <a href="https://39346.app/downloadApp" target="_blank" class="btn btn-yellow" data-i18n="btnDownloadApp">下载APP</a>
+            </div>
+
+            <!-- 直播提示横幅 -->
+            <div class="live-notice" data-i18n="liveNotice">
+                ⚽ 本平台所有有效会员均可永久免费查看实时球赛高清直播，请注册后下载APP使用
+            </div>
+        </div>
+
+        <!-- 右侧/下方 海报图 -->
+        <div class="image-box">
+            <picture>
+                <source media="(max-width: 768px)" srcset="/huodong.png">
+                <img src="/huodong.png" alt="好体育" onerror="this.style.display='none'">
+            </picture>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            'zh-CN': {
+                title: "⭐ 全网首家多语种与多币种在线娱乐平台",
+                p1_title: "🔥 热门娱乐项目畅玩：",
+                tags: ["真人视讯", "棋牌", "彩票", "体育赛事", "电子竞技", "老虎机", "捕鱼"],
+                liveNotice: "⚽ 本平台所有有效会员均可永久免费查看实时球赛高清直播，请注册后下载APP使用",
+                p2: "🌐 支持数十种不同语言 / 多种货币以及虚拟币出入金 随心切换",
+                p3: "🛡️ 32年持续运营老牌平台 • 公平公正 • 资金安全•出入款秒到",
+                p4: "🚀 好体育 期待您的加入！",
+                btnRegister: "立即注册",
+                btnPromo: "优惠活动",
+                btnChat: "会员聊天室",
+                btnDownloadApp: "下载APP"
+            },
+            'zh-TW': {
+                title: "⭐ 全網首家多語種與多幣種在線娛樂平台",
+                p1_title: "🔥 熱門娛樂項目暢玩：",
+                tags: ["真人視訊", "棋牌", "彩票", "體育賽事", "電子競技", "老虎機", "捕魚"],
+                liveNotice: "⚽ 本平台所有有效會員均可永久免費查看實時球賽高清直播，請註冊後下載APP使用",
+                p2: "🌐 支持數十種不同語言 / 多種貨幣以及虛擬幣出入金 隨心切換",
+                p3: "🛡️ 32年持續運營老牌平台 • 公平公正 • 資金安全•出入款秒到",
+                p4: "🚀 好體育 期待您的加入！",
+                btnRegister: "立即註冊",
+                btnPromo: "優惠活動",
+                btnChat: "會員聊天室",
+                btnDownloadApp: "下載APP"
+            },
+            'en': {
+                title: "⭐ First Multi-Language & Multi-Currency Gaming Platform",
+                p1_title: "🔥 Featured Entertainment Categories:",
+                tags: ["Live Casino", "Cards", "Lottery", "Sports", "E-Sports", "Slots", "Fishing"],
+                liveNotice: "⚽ All active members enjoy permanent free HD live streaming of matches. Please register and download the app.",
+                p2: "🌐 Support dozens of languages / Multi-currency & Crypto deposits & withdrawals",
+                p3: "🛡️ 32 Years Operating • Fair & Just • Secure & Instant Withdrawals",
+                p4: "🚀 Welcome to HTY Sports!",
+                btnRegister: "Register Now",
+                btnPromo: "Promotions",
+                btnChat: "Member Chat",
+                btnDownloadApp: "Download App"
+            },
+            'vi': {
+                title: "⭐ Nền tảng giải trí trực tuyến đa ngôn ngữ & tiền tệ đầu tiên",
+                p1_title: "🔥 Danh mục giải trí phổ biến:",
+                tags: ["Casino", "Game bài", "Xổ số", "Thể thao", "Esports", "Nổ hũ", "Bắn cá"],
+                liveNotice: "⚽ Tất cả hội viên hợp lệ được xem trực tiếp bóng đá HD miễn phí vĩnh viễn, vui lòng đăng ký và tải xuống APP.",
+                p2: "🌐 Hỗ trợ hàng chục ngôn ngữ / Tiền tệ & Tiền điện tử nạp rút tự do",
+                p3: "🛡️ 32 năm hoạt động • Công bằng • An toàn & Rút tiền tức thì",
+                p4: "🚀 HTY Thể Thao Chào Mừng Bạn!",
+                btnRegister: "Đăng ký ngay",
+                btnPromo: "Khuyến mãi",
+                btnChat: "Phòng chat",
+                btnDownloadApp: "Tải APP"
+            }
+        };
+
+        const DEFAULT_LANG = 'en';
+
+        function getPreferredLanguage() {
+            const languages = navigator.languages || [navigator.language || navigator.userLanguage];
+            for (let lang of languages) {
+                if (!lang) continue;
+                const fullCode = lang.toLowerCase();
+                const mainCode = fullCode.split('-')[0];
+
+                for (let key in translations) {
+                    if (key.toLowerCase() === fullCode) return key;
+                }
+                for (let key in translations) {
+                    if (key.toLowerCase() === mainCode) return key;
+                }
+            }
+            return DEFAULT_LANG;
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerText = translations[lang][key];
+                } else {
+                    element.innerText = translations[DEFAULT_LANG][key];
+                }
+            });
+
+            const tagElements = document.querySelectorAll('[data-i18n-tag]');
+            const langTags = (translations[lang] && translations[lang].tags) ? translations[lang].tags : translations[DEFAULT_LANG].tags;
+            tagElements.forEach((el, index) => {
+                if (langTags[index]) {
+                    el.innerText = langTags[index];
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentLang = getPreferredLanguage();
+            applyLanguage(currentLang);
+        });
+    </script>
+</body>
+</html>
