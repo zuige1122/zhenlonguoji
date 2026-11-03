@@ -370,17 +370,19 @@
 
         .image-box {
             flex: 1;
-            background-color: #fff8eb;
+            background: linear-gradient(135deg, #fff8eb 0%, #f9e3b0 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            min-height: 420px;
         }
 
         .image-box picture, .image-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
         /* ------------------ H5 移动端适配 ------------------ */
@@ -472,6 +474,7 @@
 
             .image-box {
                 width: 100%;
+                min-height: 220px;
                 height: auto;
                 background-color: #ffffff;
             }
@@ -523,10 +526,10 @@
 
             <!-- 2×2 整齐网格按钮组 -->
             <div class="btn-group">
-                <a href="https://39346.app/registered" target="_blank" class="btn btn-yellow" data-i18n="btnRegister">立即注册</a>
-                <a href="https://39346.app/promotion" target="_blank" class="btn btn-white" data-i18n="btnPromo">优惠活动</a>
-                <a href="https://39346.app/mine" target="_blank" class="btn btn-white" data-i18n="btnChat">会员聊天室</a>
-                <a href="https://39346.app/downloadApp" target="_blank" class="btn btn-yellow" data-i18n="btnDownloadApp">下载APP</a>
+                <a href="https://39346.app/registered" target="_blank" rel="noopener noreferrer" class="btn btn-yellow" data-i18n="btnRegister">立即注册</a>
+                <a href="https://39346.app/promotion" target="_blank" rel="noopener noreferrer" class="btn btn-white" data-i18n="btnPromo">优惠活动</a>
+                <a href="https://39346.app/mine" target="_blank" rel="noopener noreferrer" class="btn btn-white" data-i18n="btnChat">会员聊天室</a>
+                <a href="https://39346.app/downloadApp" target="_blank" rel="noopener noreferrer" class="btn btn-yellow" data-i18n="btnDownloadApp">下载APP</a>
             </div>
 
             <!-- 直播提示横幅 -->
@@ -538,8 +541,8 @@
         <!-- 右侧/下方 海报图 -->
         <div class="image-box">
             <picture>
-                <source media="(max-width: 768px)" srcset="/huodong.png">
-                <img src="/huodong.png" alt="好体育" onerror="this.style.display='none'">
+                <source media="(max-width: 768px)" srcset="./huodong.svg">
+                <img src="./huodong.svg" alt="好体育" onerror="this.onerror=null; this.src='./huodong.svg';">
             </picture>
         </div>
     </div>
@@ -600,7 +603,7 @@
             }
         };
 
-        const DEFAULT_LANG = 'en';
+        const DEFAULT_LANG = 'zh-CN';
 
         function getPreferredLanguage() {
             const languages = navigator.languages || [navigator.language || navigator.userLanguage];
